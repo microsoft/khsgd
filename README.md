@@ -5,12 +5,11 @@
 For a detailed description of the KH-SGD algorithm and its guarantees, see [Low-Rank Thinning](https://arxiv.org/pdf/2502.12063).
 
 ```bib
-@inproceedings{carrell2025lowrank,
+@article{carrell2025low,
   title={Low-Rank Thinning},
-  author={Annabelle Michael Carrell and Albert Gong and Abhishek Shetty and Raaz Dwivedi and Lester Mackey},
-  booktitle={Forty-second International Conference on Machine Learning},
-  year={2025},
-  url={https://openreview.net/forum?id=iAkg2nVmvN}
+  author={Carrell, Annabelle Michael and Gong, Albert and Shetty, Abhishek and Dwivedi, Raaz and Mackey, Lester},
+  journal={arXiv preprint arXiv:2502.12063},
+  year={2025}
 }
 ```
 
@@ -51,6 +50,8 @@ torchrun --nproc_per_node=1 --nnodes=1 --master_addr="localhost" --master_port=3
 with `<SORT>` replaced by each of the sorters ("CD-GraB", "D-RR", "KH-SGD", "SBW") and `<SEED>` replaced by each seed in the range 1-5.
 
 To recreate the plot, run `python LR-HMDA.py` in the [notebooks/LR-HMDA](notebooks/LR-HMDA) directory.
+
+To recreate the supplementary plot, add `torch.save(gathered_grads, f"PREFIX_{batch}")` to line 291 in `d_hmda.py`. Run the main script as described above. Then, run `sing_vals.ipynb` in the notebooks directory, with `PREFIX` as `FILENAME_PREFIX` (by default it is `all_grads_epoch`) appended to your data location.
 
 ## Contributing
 
